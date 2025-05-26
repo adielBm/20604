@@ -171,12 +171,16 @@
   type="text/javascript"></script>
 </head>
 <body>
-<h2 style="text-align: center;">
-מודלים חישוביים (20604)
-</h2>
-<p style="text-align: center;">
-שאלות ממבחנים
+<p style="text-align: left;">
+<a href="https://github.com/adielBm/20604" style="color: #a6a6a6;font-size: 13px;">https://github.com/adielBm/20604</a>
 </p>
+<h2 id="מודלים-חישוביים-20604">מודלים חישוביים (20604)</h2>
+<p>שאלות ממבחנים</p>
+<hr />
+<div id="toc">
+
+</div>
+<hr />
 <h1 id="מועד-2024b-65">מועד 2024b-65</h1>
 <h2 id="שאלה-1">שאלה 1</h2>
 <ul>
@@ -794,7 +798,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const headings = document.querySelectorAll("h1[id]");
     if (headings.length === 0) return;
 
-    const tocContainer = document.createElement("div");
+    const tocContainer = document.querySelector("#toc")
     const list = document.createElement("ul");
 
     headings.forEach(h => {
@@ -806,7 +810,6 @@ document.addEventListener("DOMContentLoaded", function () {
         list.appendChild(li);
     });
     tocContainer.appendChild(list);
-    document.body.prepend(tocContainer); // or use appendChild for end of body
 });
 </script>
 </body>

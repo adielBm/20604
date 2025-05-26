@@ -1,7 +1,14 @@
-<h2 style="text-align: center;">מודלים חישוביים (20604)</h2>
-<p style="text-align: center;">שאלות ממבחנים</p>
+<p style="text-align: left;"><a href="https://github.com/adielBm/20604" style="color: #a6a6a6;font-size: 13px;">https://github.com/adielBm/20604</a></p>
 
+## מודלים חישוביים (20604) 
 
+שאלות ממבחנים
+
+____
+
+<div id="toc"></div>
+
+____
 
 # מועד 2024b-65
 
@@ -262,7 +269,7 @@ $L = \{\langle M \rangle | M \text{ is a TM s.t. there exists some input on whic
 
 <style> 
 html {
-    background: #00aeef1f;
+    background: #cfcfcf1f;
 }
 body {
     direction: rtl;
@@ -272,7 +279,7 @@ body {
 	max-width: 46em;
 }
 h1, h2, h3, h4, h5, h6, strong, b b { 
-	color: #00aeef;
+	color: #2a73f0;
 }
 img {
     max-width: 25em;
@@ -286,7 +293,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const headings = document.querySelectorAll("h1[id]");
     if (headings.length === 0) return;
 
-    const tocContainer = document.createElement("div");
+    const tocContainer = document.querySelector("#toc")
     const list = document.createElement("ul");
 
     headings.forEach(h => {
@@ -298,6 +305,5 @@ document.addEventListener("DOMContentLoaded", function () {
         list.appendChild(li);
     });
     tocContainer.appendChild(list);
-    document.body.prepend(tocContainer); // or use appendChild for end of body
 });
 </script>
