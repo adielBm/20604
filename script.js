@@ -50,6 +50,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    document.querySelectorAll('li').forEach(li => {
+        const firstNode = li.firstChild;
+        if (
+            firstNode &&
+            firstNode.nodeType === Node.ELEMENT_NODE &&
+            firstNode.classList.contains('math') &&
+            firstNode.classList.contains('inline')
+        ) {
+            li.style.direction = 'ltr';
+            li.style.textAlign = 'left';
+        }
+    });
 
 
 });
