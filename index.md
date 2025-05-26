@@ -161,7 +161,7 @@ $\text{SET-PARTITION} = \{\langle x_1, \dots, x_n \rangle | \text{there is a set
 		- ניקח את המילה $w=xyz=c^{3p}a^pb^{2p}$. שנמצאת כמובן בשפה $A$, כאשר $|xy|\leq p$ ו-$|y|>0$. כאשר $y$ מורכבת מ- $c$ים בלבד ואינה ריקה.
 		- לפי הלמה, אם ננפח למטה, כלומר נקבל את המילה $xy^0z$, שבה השמטנו לפחות $c$ אחת, (ולא $b$-ים או $a$-ים) אינה נמצאת ב- $A$, בסתירה ללמת הניפוח.
 		- מסקנה: $A$ אינה רגולרית.
-ב.בנו NFA עבור הב"ר הבא: $\mathtt{1^*0^*1^*1}$. יש להסתפק באוטומט בן 3 מצבים. הסבירו בקצרה את רעיון הבניה.
+- ב.בנו NFA עבור הב"ר הבא: $\mathtt{1^*0^*1^*1}$. יש להסתפק באוטומט בן 3 מצבים. הסבירו בקצרה את רעיון הבניה.
 	- **תשובה:** 
 - ג. בנו ב"ר מעל א"ב $\{a,b\}$ עבור השפה הבאה: $L = \{a^nb^m, n \ge 1, m \ge 1, mn \ge 3\}$.
 	- **תשובה:** 
@@ -288,22 +288,4 @@ img {
 }
 </style> 
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const headings = document.querySelectorAll("h1[id]");
-    if (headings.length === 0) return;
-
-    const tocContainer = document.querySelector("#toc")
-    const list = document.createElement("ul");
-
-    headings.forEach(h => {
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        a.href = "#" + h.id;
-        a.textContent = h.textContent;
-        li.appendChild(a);
-        list.appendChild(li);
-    });
-    tocContainer.appendChild(list);
-});
-</script>
+<script src="script.js"></script>

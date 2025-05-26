@@ -563,11 +563,13 @@ class="math inline">\(c\)</span> אחת, (ולא <span
 class="math inline">\(b\)</span>-ים או <span
 class="math inline">\(a\)</span>-ים) אינה נמצאת ב- <span
 class="math inline">\(A\)</span>, בסתירה ללמת הניפוח.</li>
-<li>מסקנה: <span class="math inline">\(A\)</span> אינה רגולרית. ב.בנו
-NFA עבור הב”ר הבא: <span
-class="math inline">\(\mathtt{1^*0^*1^*1}\)</span>. יש להסתפק באוטומט בן
-3 מצבים. הסבירו בקצרה את רעיון הבניה.</li>
+<li>מסקנה: <span class="math inline">\(A\)</span> אינה רגולרית.</li>
 </ul></li>
+</ul></li>
+<li>ב.בנו NFA עבור הב”ר הבא: <span
+class="math inline">\(\mathtt{1^*0^*1^*1}\)</span>. יש להסתפק באוטומט בן
+3 מצבים. הסבירו בקצרה את רעיון הבניה.
+<ul>
 <li><strong>תשובה:</strong></li>
 </ul></li>
 <li>ג. בנו ב”ר מעל א”ב <span class="math inline">\(\{a,b\}\)</span> עבור
@@ -775,7 +777,7 @@ class="math inline">\(\langle G,k \rangle\)</span> שייך לשפה אם בגר
 <p>#todo</p>
 <style> 
 html {
-    background: #00aeef1f;
+    background: #cfcfcf1f;
 }
 body {
     direction: rtl;
@@ -785,7 +787,7 @@ body {
     max-width: 46em;
 }
 h1, h2, h3, h4, h5, h6, strong, b b { 
-    color: #00aeef;
+    color: #2a73f0;
 }
 img {
     max-width: 25em;
@@ -793,24 +795,6 @@ img {
     display: block;
 }
 </style>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const headings = document.querySelectorAll("h1[id]");
-    if (headings.length === 0) return;
-
-    const tocContainer = document.querySelector("#toc")
-    const list = document.createElement("ul");
-
-    headings.forEach(h => {
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        a.href = "#" + h.id;
-        a.textContent = h.textContent;
-        li.appendChild(a);
-        list.appendChild(li);
-    });
-    tocContainer.appendChild(list);
-});
-</script>
+<script src="script.js"></script>
 </body>
 </html>
