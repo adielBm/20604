@@ -1,30 +1,11 @@
 <h2 style="text-align: center;">מודלים חישוביים (20604)</h2>
 <p style="text-align: center;">שאלות ממבחנים</p>
-<style> 
-html {
-    background: #3f51b51f;
-}
-body {
-    direction: rtl;
-    font-family: system-ui;
-    line-height: 1.6;
-    background: white;
-	max-width: 46em;
-}
-h1, h2, h3, h4, h5, h6, strong, b b { 
-	color: #3F51B5;
-}
-img {
-    max-width: 25em;
-    margin: 0 auto;
-    display: block;
-}
-</style> 
+
 
 
 # מועד 2024b-65
 
-### שאלה 1
+## שאלה 1
 
 - א. האם השפה הבאה מעל הא"ב $\{a,b\}$ היא שפה רגולרית? הוכיחו את טענתכם. $A = \{w \in \Sigma^* : |w| \text{ is odd, and the middle symbol of } w \text{ is } b\}$
 	- כלומר, השפה $A$ מורכבת מכל המילים באורך אי-זוגי, כאשר האות האמצעית במילה היא $b$.
@@ -38,7 +19,8 @@ img {
 - ג. בנו ביטוי רגולרי שמייצר את השפה שה-NFA הבא מזהה. ![[image20250521120110.png|300]]
 	- **תשובה:** $b^*(a\cup b)a^*b^*$ 
 
-### שאלה 2
+
+## שאלה 2
 
 - א. תהיינה C,B,A שפות חסרות-הקשר.
 	- קבעו לגבי כל אחת מהשפות הבאות אם היא שפה חסרת הקשר. יש להוכיח את טענתכם.
@@ -62,7 +44,7 @@ $A(B \cup C)$
 		- **תשובה:** לא. המילה לא יכולה להתחיל באות $b$.
 
 
-### שאלה 3
+## שאלה 3
 יהיה $G$ גרף לא מכוון. נגדיר את שתי השפות הבאות:
 $\text{SPATH} = \{\langle G, a, b, k \rangle | G \text{ contains a simple path of length at most } k \text{ from } a \text{ to } b\}$
 $\text{LPATH} = \{\langle G, a, b, k \rangle | G \text{ contains a simple path of length at least } k \text{ from } a \text{ to } b\}$
@@ -84,7 +66,7 @@ $\text{LPATH} = \{\langle G, a, b, k \rangle | G \text{ contains a simple path o
 				- נדפיס את $\langle G, a, b, k \rangle$."
 			- אם $\langle G, a, b \rangle\in \text{UHAMPATH}$, אזי $G$ מכיל מסלול המילטוני באורך $k$, מ- $a$ ל- $b$, אזי $\langle G, a, b, k \rangle\in \text{LPATH}$.
 			- אם $\langle G, a, b, k \rangle\in \text{LPATH}$, אזי $G$ מכיל מסלול פשוט באורך $k$, מ- $a$ ל- $b$, אבל ל-$G$ יש $k$ צמתים, אזי המסלול הוא מסלול המילטוני, כלומר $\langle G, a, b \rangle\in \text{UHAMPATH}$.
-### שאלה 4
+## שאלה 4
 
 - א. הוכיחו או הפריכו: "נתון שהשפות $L_1$ ו-$L_2$ ניתנות להכרעה. כמו כן ידוע ש- $L_1\subseteq L \subseteq L_2$. אזי $L$ ניתנת להכרעה."
 	- **תשובה:** הטענה אינה נכונה. דוגמה נגדית: $L_1=\emptyset$, $L_2=\Sigma^*$, ו- $L$ שפה בלתי כריעה כלשהיא מעל הא"ב $\Sigma$.  
@@ -101,9 +83,10 @@ $\text{LPATH} = \{\langle G, a, b, k \rangle | G \text{ contains a simple path o
 			- $q_2 x y$
 			- $xq_3 y$ 
 			- $xyq_{acc}\sqcup$ 
+
 # מועד 2024b-94
 
-### שאלה 1
+## שאלה 1
 
 - א. הוכיחו שהשפה הבאה מעל הא"ב $\{a,b\}$ רגולרית: $L_1 = \{w | w \ne ba, \text{ and } w \text{ does not contain } bab\}$.
 	- **תשובה:** נבנה DFA המזהה את השפה:
@@ -120,11 +103,14 @@ $\text{LPATH} = \{\langle G, a, b, k \rangle | G \text{ contains a simple path o
 - ג. הוכיחו שהשפה $L$ מהסעיף הקודם אינה רגולרית.
 	- **תשובה:**
 
-### שאלה 2
+## שאלה 2
 
-
-
-### שאלה 3
+- א. הדיאגרמה הבאה מראה היררכיה של השפות שלמדנו בקורס. (ראו רשימה למטה). רשמו בכל אליפסה, לאיזו מחלקת שפות היא מתייחסת. כמו כן, לכל אחת מחמש המחלקות תנו דוגמה לשפה אחת מתוך המחלקה שאינה שייכת לאף מחלקה (אליפסה) חלקית. אין צורך לנמק בחירה זו. השפות: ניתנות לזיהוי על ידי מ"ט, שפות רגולריות, שפות ניתנות להכרעה ע"י מ"ט, שפות חסרות הקשר, שפות לא ניתנות להכרעה. ![[Pasted image 20250526033605.png]]
+	- **תשובה:** 
+- ב.יהיו $A$ ו-$B$ שפות חסרות-הקשר. האם בהכרח $A\setminus B$ חסרת-הקשר? כלומר האם המחלקה CFL סגורה תחת הפרש קבוצות? 
+	- **תשובה:** 
+- ג. הוכיחו שהשפה הבאה אינה חסרת-הקשר. $\{0^j1^k \mid k>j^2\}$
+## שאלה 3
 
 - א. האם שפה הבאה ניתנת לזיהוי על ידי מ"ט. הוכיחו או הפריכו. $L = \{\langle M \rangle | M \text{ is a Turing machine and } M \text{ accepts at least one palindrome}\}$. בשפה $L$ יש קידודים של כל מכונות טיורינג המקבלות לפחות פלינדרום אחד.
 	- **תשובה:**
@@ -133,7 +119,7 @@ $\text{some non-blank symbol on its tape.}\}$
 	 בשפה $L$ יש קידודים של כל מכונות טיורינג שמקיימות את התנאי הבא: אם המכונה מתחילה לעבוד עם סרט ריק, אז היא תרשום עליו לפחות תו אחד ששונה מרווח.
 	**תשובה:**
 
-### שאלה 4
+## שאלה 4
 
 - א.הוכיחו או הפריכו: אם השפה VERTEX-COVER שייכת למחלקה P, אזי גם השפה HAMPATH שייכת למחלקה P.
 	- תזכורת: 
@@ -155,6 +141,7 @@ $\text{SET-PARTITION} = \{\langle x_1, \dots, x_n \rangle | \text{there is a set
 			- אם כן: $\langle x_1, \dots, x_m, S-2t\rangle\in \text{SET-PARTITION}$.
 		- כיוון שני: אם $\langle x_1, \dots, x_m, S-2t\rangle\in \text{SET-PARTITION}$, אז ניתן לחלק את המספרים לשתי רשימות בעלות אותו סכום $S-t$. 
 			- לכן סכום המספרים ברשימה השנייה הוא $S-t$, כלומר סכום המספרים ברשימה הראשונה הוא $t$, כלומר $\langle x_1, \dots, x_m, t \rangle\in \text{SUBSET-SUM}$.
+
 
 
 # מבחן לדוגמה 1
@@ -205,6 +192,7 @@ $\text{DOUBLE-SAT} = \{\langle \phi \rangle | \phi \text{ is a Boolean formula w
 	- ֹֹ**תשובה:**
 
 
+
 # מבחן לדוגמה 2 
 
 ## שאלה 1
@@ -217,6 +205,7 @@ $\text{DOUBLE-SAT} = \{\langle \phi \rangle | \phi \text{ is a Boolean formula w
 - ג. תהי $L_1, L_2, L_3, \dots$ סדרה אינסופית של שפות רגולריות. האם האיחוד האינסופי של כל
 השפות בהכרח יהיה שפה רגולרית?
 - ד. בנו ב"ר עבור שפה של NFA הבא:![[Pasted image 20250525143930.png|300]]
+
 ## שאלה 2
 
 - א. תהי $A$ שפה חסרת הקשר המיוצרת בעזרת דקדוק חסר-הקשר $G = (V, \Sigma, R, S)$. בנו דקדוק
@@ -229,6 +218,7 @@ $\text{DOUBLE-SAT} = \{\langle \phi \rangle | \phi \text{ is a Boolean formula w
 	- בצעד הבא רוצים לסלק מעבר אפסילון $A\to \varepsilon$. רשמו דקדוק שיתקבל לאחר צעד זה.
 - ג. בנו PDA עבור השפה הבאה: $L = \{b^ia^j | i \ge j \ge 0\}$. הסבירו את הפתרון.
 - ד. נתון CFG הבא: $S \to S+S \mid S-S \mid S \times S \mid S/S \mid (S) \mid -S \mid 0 \mid 1 \mid \cdots \mid 9$. האם את הסדרות הבאות: $4 - - 5, 2 + - 5$. אפשר לגזור בדקדוק זה? אם כן בנו עצי גזירה עבורן.
+
 ## שאלה 3
 
 - א. האם השפה $L$ הבאה ניתנת להכרעה? הוכיחו.
@@ -236,6 +226,7 @@ $L = \{\langle M \rangle | M \text{ is a TM s.t. there exists some input on whic
 	- **תשובה:**
 - ב. תהי $L$ שפה הניתנת לזיהוי על ידי מ"ט ותהי $L$ משלים שפה שלא ניתנת לזיהוי על ידי מ"ט. נסתכל בשפה הבאה: $L' = \{0w \mid w \in L\} \cup \{1w \mid w \notin L\}$. האם $L'$ – ניתנת להכרעה? ניתנת לזיהוי? הוכיחו.
 	- **תשובה:**
+
 
 ## שאלה 4
 
@@ -253,6 +244,54 @@ $L = \{\langle M \rangle | M \text{ is a TM s.t. there exists some input on whic
 # מועד 2025a-64  
 
 #todo 
+
+
 # מועד 2025a-84 
 
+
 #todo 
+
+
+
+
+<style> 
+html {
+    background: #3f51b51f;
+}
+body {
+    direction: rtl;
+    font-family: system-ui;
+    line-height: 1.6;
+    background: white;
+	max-width: 46em;
+}
+h1, h2, h3, h4, h5, h6, strong, b b { 
+	color: #3F51B5;
+}
+img {
+    max-width: 25em;
+    margin: 0 auto;
+    display: block;
+}
+</style> 
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const headings = document.querySelectorAll("h1[id]");
+    if (headings.length === 0) return;
+
+    const tocContainer = document.createElement("div");
+    const list = document.createElement("ul");
+
+    headings.forEach(h => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = "#" + h.id;
+        a.textContent = h.textContent;
+        li.appendChild(a);
+        list.appendChild(li);
+    });
+    tocContainer.appendChild(list);
+    document.body.prepend(tocContainer); // or use appendChild for end of body
+});
+</script>
