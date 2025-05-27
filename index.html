@@ -771,7 +771,19 @@ class="math inline">\(\text{DOUBLE-SAT}\)</span> היא NP-שלמה.</li>
 <span class="math inline">\(\mathrm{Triangle} = \{\langle G \rangle: G
 \text{ contains at least one triangle}\}\)</span>
 <ul>
-<li>ֹֹ<strong>תשובה:</strong></li>
+<li>ֹֹ<strong>תשובה:</strong> נראה אלגוריתם פולינומיאלי עבור הבעיה:
+<ul>
+<li>עבור כל שלשה של צמתים ב- <span class="math inline">\(G\)</span>
+(סיבוכיות <span class="math inline">\(O(|V|^3)\)</span>):
+<ul>
+<li>בדוק אם יש קשת בין כל זוג של צמתי השלשה. (סיבוכיות <span
+class="math inline">\(O(|E|^2)\)</span>). אם יש, נקבל.<br />
+</li>
+</ul></li>
+<li>אם סיימנו בלי למצוא משולש, נדחה.</li>
+<li>סיבוכיות: <span class="math inline">\(O(|V|^3 \cdot |E|^2)\)</span>,
+שהיא פולינומיאלית, ולכן השפה שייכת למחלקה P.</li>
+</ul></li>
 </ul></li>
 </ul>
 <h1 id="מבחן-לדוגמה-2">מבחן לדוגמה 2</h1>
