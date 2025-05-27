@@ -1,3 +1,6 @@
+<script src="script.js"></script>
+<link rel="stylesheet" href="style.css" type="text/css" /> 
+
 <p style="text-align: left;"><a href="https://github.com/adielBm/20604" style="color: #a6a6a6;font-size: 13px;">https://github.com/adielBm/20604</a></p>
 
 ## מודלים חישוביים (20604) 
@@ -190,7 +193,16 @@ $\text{SET-PARTITION} = \{\langle x_1, \dots, x_n \rangle | \text{there is a set
 
 - א. האם השפה הבאה ניתנת להכרעה על ידי מ"ט. הוכיחו.
 $L_1 = \{\langle M \rangle | M \text{ is a TM and there exists an input on which } M \text{ halts in less than } |\langle M \rangle| \text{ steps}\}$
-	- **תשובה:** 
+	- **תשובה:** השפה ניתנת להכרעה על ידי מ"ט:
+		- $\text{``On input }\langle M \rangle$: 
+			- Compute $n:=|\langle M \rangle|$.
+			- For each input $w$ of length at most $n$:
+				- Simulate $M$ on $w$ for at most $n-1$ steps.
+				- If $M$ halts, then *accept*.
+			- _Reject_. $\text{''}$  
+		- אם $\langle M \rangle\in L_1$, אזי קיימת מילה $w$ כך ש- $M$ עוצר עליה תוך פחות מ- $|\langle M \rangle|$ צעדים, מילה זו אינה יכולה להיות ארוכה מ- $|\langle M \rangle|$, ולכן המכונה כן עוברת עליה, ומקבלת אותה. 
+		- אם $\langle M \rangle\notin L_1$, אזי $M$ לא עוצר על אף מילה באורך קטן מ- $|\langle M \rangle|$, ולכן המכונה לא מקבלת אף מילה, ולכן לא מקבלת את השפה $L_1$.
+
 - ב. האם השפה הבאה ניתנת לזיהוי? הוכיחו. $\{\langle M \rangle | M \text{ is a TM and } |L(M)| \ge 3\}$.
 	- **תשובה:** 
 - ג. האם השפה הבאה ניתנת לזיהוי? $\{\langle M \rangle | M \text{ is a TM and } L(M) \text{ is countable}\}$.
@@ -277,33 +289,3 @@ $L = \{\langle M \rangle | M \text{ is a TM s.t. there exists some input on whic
 #todo 
 
 
-
-
-<style> 
-html {
-    background: #cfcfcf1f;
-}
-body {
-    direction: rtl;
-    font-family: sans-serif;
-    line-height: 1.6;
-    background: white;
-	max-width: 46em;
-}
-h1, h2, h3, h4, h5, h6, strong, b b { 
-	color: #2a73f0;
-}
-img {
-    max-width: 25em;
-    margin: 0 auto;
-    display: block;
-}
-span.subq {
-    font-size: 20px;
-    color: #2a73f0;
-    font-weight: bold;
-    padding-left: 14px;
-}
-</style> 
-
-<script src="script.js"></script>

@@ -171,6 +171,8 @@
   type="text/javascript"></script>
 </head>
 <body>
+<script src="script.js"></script>
+<p><link rel="stylesheet" href="style.css" type="text/css" /></p>
 <p style="text-align: left;">
 <a href="https://github.com/adielBm/20604" style="color: #a6a6a6;font-size: 13px;">https://github.com/adielBm/20604</a>
 </p>
@@ -649,7 +651,38 @@ class="math inline">\(L_1 = \{\langle M \rangle | M \text{ is a TM and
 there exists an input on which } M \text{ halts in less than } |\langle
 M \rangle| \text{ steps}\}\)</span>
 <ul>
-<li><strong>תשובה:</strong></li>
+<li><strong>תשובה:</strong> השפה ניתנת להכרעה על ידי מ”ט:
+<ul>
+<li><span class="math inline">\(\text{``On input }\langle M
+\rangle\)</span>:
+<ul>
+<li>Compute <span class="math inline">\(n:=|\langle M
+\rangle|\)</span>.</li>
+<li>For each input <span class="math inline">\(w\)</span> of length at
+most <span class="math inline">\(n\)</span>:
+<ul>
+<li>Simulate <span class="math inline">\(M\)</span> on <span
+class="math inline">\(w\)</span> for at most <span
+class="math inline">\(n-1\)</span> steps.</li>
+<li>If <span class="math inline">\(M\)</span> halts, then
+<em>accept</em>.</li>
+</ul></li>
+<li><em>Reject</em>. <span
+class="math inline">\(\text{&#39;&#39;}\)</span><br />
+</li>
+</ul></li>
+<li>אם <span class="math inline">\(\langle M \rangle\in L_1\)</span>,
+אזי קיימת מילה <span class="math inline">\(w\)</span> כך ש- <span
+class="math inline">\(M\)</span> עוצר עליה תוך פחות מ- <span
+class="math inline">\(|\langle M \rangle|\)</span> צעדים, מילה זו אינה
+יכולה להיות ארוכה מ- <span class="math inline">\(|\langle M
+\rangle|\)</span>, ולכן המכונה כן עוברת עליה, ומקבלת אותה.</li>
+<li>אם <span class="math inline">\(\langle M \rangle\notin L_1\)</span>,
+אזי <span class="math inline">\(M\)</span> לא עוצר על אף מילה באורך קטן
+מ- <span class="math inline">\(|\langle M \rangle|\)</span>, ולכן המכונה
+לא מקבלת אף מילה, ולכן לא מקבלת את השפה <span
+class="math inline">\(L_1\)</span>.</li>
+</ul></li>
 </ul></li>
 <li>ב. האם השפה הבאה ניתנת לזיהוי? הוכיחו. <span
 class="math inline">\(\{\langle M \rangle | M \text{ is a TM and }
@@ -820,32 +853,5 @@ class="math inline">\(\langle G,k \rangle\)</span> שייך לשפה אם בגר
 <p>#todo</p>
 <h1 id="מועד-2025a-84">מועד 2025a-84</h1>
 <p>#todo</p>
-<style> 
-html {
-    background: #cfcfcf1f;
-}
-body {
-    direction: rtl;
-    font-family: sans-serif;
-    line-height: 1.6;
-    background: white;
-    max-width: 46em;
-}
-h1, h2, h3, h4, h5, h6, strong, b b { 
-    color: #2a73f0;
-}
-img {
-    max-width: 25em;
-    margin: 0 auto;
-    display: block;
-}
-span.subq {
-    font-size: 20px;
-    color: #2a73f0;
-    font-weight: bold;
-    padding-left: 14px;
-}
-</style>
-<script src="script.js"></script>
 </body>
 </html>
