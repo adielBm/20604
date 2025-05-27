@@ -1,8 +1,6 @@
 <script src="script.js"></script>
 <link rel="stylesheet" href="style.css" type="text/css" /> 
 
-<p style="text-align: left;"><a href="https://github.com/adielBm/20604" style="color: #a6a6a6;font-size: 13px;">https://github.com/adielBm/20604</a></p>
-
 ## מודלים חישוביים (20604) 
 
 שאלות ממבחנים
@@ -100,7 +98,7 @@ $\text{LPATH} = \{\langle G, a, b, k \rangle | G \text{ contains a simple path o
 ## שאלה 1
 
 - א. הוכיחו שהשפה הבאה מעל הא"ב $\{a,b\}$ רגולרית: $L_1 = \{w | w \ne ba, \text{ and } w \text{ does not contain } bab\}$.
-	- **תשובה:** נבנה DFA המזהה את השפה:
+	- **תשובה:** 
 - ב. נסתכל בשפה הבאה מעל הא"ב $\{0,1\}$. $L = \{www | w \text{ starts with } 0\}$
 	- אדם מנסה להוכיח ש-$L$ שפה רגולרית. הוא כתב את ההוכחה הבאה:
 		1. תהי $M = \{w | w \text{ starts with } 0\}$ שפה רגולרית (כי קיים DFA עבורה).
@@ -119,6 +117,7 @@ $\text{LPATH} = \{\langle G, a, b, k \rangle | G \text{ contains a simple path o
 - ב.יהיו $A$ ו-$B$ שפות חסרות-הקשר. האם בהכרח $A\setminus B$ חסרת-הקשר? כלומר האם המחלקה CFL סגורה תחת הפרש קבוצות? 
 	- **תשובה:** 
 - ג. הוכיחו שהשפה הבאה אינה חסרת-הקשר. $\{0^j1^k \mid k>j^2\}$
+
 ## שאלה 3
 
 - א. האם שפה הבאה ניתנת לזיהוי על ידי מ"ט. הוכיחו או הפריכו. $L = \{\langle M \rangle | M \text{ is a Turing machine and } M \text{ accepts at least one palindrome}\}$. בשפה $L$ יש קידודים של כל מכונות טיורינג המקבלות לפחות פלינדרום אחד.
@@ -126,7 +125,7 @@ $\text{LPATH} = \{\langle G, a, b, k \rangle | G \text{ contains a simple path o
 - ב. הוכיחו ששפה הבאה ניתנת להכרעה על ידי מ"ט דטרמיניסטית $L = \{\langle M \rangle | M \text{ is a TM and if we start } M \text{ with a blank input tape, then it will finally write}$
 $\text{some non-blank symbol on its tape.}\}$
 	 בשפה $L$ יש קידודים של כל מכונות טיורינג שמקיימות את התנאי הבא: אם המכונה מתחילה לעבוד עם סרט ריק, אז היא תרשום עליו לפחות תו אחד ששונה מרווח.
-	**תשובה:**
+	 - **תשובה:**
 
 ## שאלה 4
 
@@ -192,7 +191,7 @@ $\text{SET-PARTITION} = \{\langle x_1, \dots, x_n \rangle | \text{there is a set
 ## שאלה 3
 
 - א. האם השפה הבאה ניתנת להכרעה על ידי מ"ט. הוכיחו.
-$L_1 = \{\langle M \rangle | M \text{ is a TM and there exists an input on which } M \text{ halts in less than } |\langle M \rangle| \text{ steps}\}$
+$L_1 = \{\langle M \rangle \mid M \text{ is a TM and there exists an input on which } M \text{ halts in less than } |\langle M \rangle| \text{ steps}\}$
 	- **תשובה:** השפה ניתנת להכרעה על ידי מ"ט:
 		- $\text{``On input }\langle M \rangle$: 
 			- Compute $n:=|\langle M \rangle|$.
@@ -203,10 +202,18 @@ $L_1 = \{\langle M \rangle | M \text{ is a TM and there exists an input on which
 		- אם $\langle M \rangle\in L_1$, אזי קיימת מילה $w$ כך ש- $M$ עוצר עליה תוך פחות מ- $|\langle M \rangle|$ צעדים, מילה זו אינה יכולה להיות ארוכה מ- $|\langle M \rangle|$, ולכן המכונה כן עוברת עליה, ומקבלת אותה. 
 		- אם $\langle M \rangle\notin L_1$, אזי $M$ לא עוצר על אף מילה באורך קטן מ- $|\langle M \rangle|$, ולכן המכונה לא מקבלת אף מילה, ולכן לא מקבלת את השפה $L_1$.
 
-- ב. האם השפה הבאה ניתנת לזיהוי? הוכיחו. $\{\langle M \rangle | M \text{ is a TM and } |L(M)| \ge 3\}$.
-	- **תשובה:** 
-- ג. האם השפה הבאה ניתנת לזיהוי? $\{\langle M \rangle | M \text{ is a TM and } L(M) \text{ is countable}\}$.
-	- **תשובה:** 
+- ב. האם השפה הבאה ניתנת לזיהוי? הוכיחו. $\{\langle M \rangle \mid M \text{ is a TM and } |L(M)| \ge 3\}$.
+	- **תשובה:** השפה מזוהה-טיורינג.
+		- נסמן $s_1,s_2,s_3,\ldots$ את סדרת המילים ב $\Sigma^*$. 
+		- "עבור קלט $\langle M\rangle$ כאשר $M$ היא מ"ט:
+			- לכל $i=1,2,\ldots$:
+				- נריץ את $M$ על כל אחד מ- $s_1,s_2,\ldots,s_i$, _לכל היותר_ $i$ צעדים. 
+				- אם $M$ מקבלת מילה כלשהי (שאינה סומנה עדיין על הסרט), נוסיף 1 לקאונטר $j$, ונרשום אותה על הסרט.
+				- אם $j\geq 3$, נקבל."
+		- אם אכן $L(M)\geq 3$, אז בעצם קיימים לפחות 3 מילים ב- $L(M)$ שעבורם $M$ תקבל במספר סופי של צעדים. המ"ט שבנינו אינה יכולה להיכנס ללופ שהרי הגבלנו את הריצות של $M$ במספר הצעדים.
+
+- ג. האם השפה הבאה ניתנת לזיהוי? $\{\langle M \rangle \mid M \text{ is a TM and } L(M) \text{ is countable}\}$.
+	- **תשובה:** כן. השפה ניתנת לזיהוי (ואף כריעה). אם אכן $\langle M \rangle$ הוא תיאור של מ"ט, אזי השפה $L(M)$ היא בת-מניה, שהרי לא קיימת שפה שאינה בת-מנייה מעל אלפבית סופי. אם כן השפה הנתונה היא שפת כל התיאורים של מ"ט. והיא כריעה.
 
 ## שאלה 4 
 
@@ -259,8 +266,6 @@ $\text{DOUBLE-SAT} = \{\langle \phi \rangle | \phi \text{ is a Boolean formula w
 - א. האם השפה $L$ הבאה ניתנת להכרעה? הוכיחו.
 $L = \{\langle M \rangle | M \text{ is a TM s.t. there exists some input on which } M \text{ makes at least } 5 \text{ steps}\}$
 	- **תשובה:** 
-	- https://www.cs.rice.edu/~nakhleh/COMP481/final_review_sp06_sol.pdf
-	- https://www.cs.rice.edu/~nakhleh/COMP481/final_review_sp06.pdf
 - ב. תהי $L$ שפה הניתנת לזיהוי על ידי מ"ט ותהי $L$ משלים שפה שלא ניתנת לזיהוי על ידי מ"ט. נסתכל בשפה הבאה: $L' = \{0w \mid w \in L\} \cup \{1w \mid w \notin L\}$. האם $L'$ – ניתנת להכרעה? ניתנת לזיהוי? הוכיחו.
 	- **תשובה:**
 
@@ -268,8 +273,8 @@ $L = \{\langle M \rangle | M \text{ is a TM s.t. there exists some input on whic
 ## שאלה 4
 
 - א. נסתכל ב-2 שפות הבאות:
-- **WVC**: given a graph $G(V,E)$, a weight function $w:V \to R^+$, constant $k$. then $\langle G,f,k\rangle$ belongs to WVC if $G$ has a vertex cover of total weight of most $k$.
-- **VC**: given a graph $G(V,E)$ and integer $K$. Then $\langle G,K \rangle$ belongs to VC if $G$ has a vertex cover of size at most $K$.
+- WVC: given a graph $G(V,E)$, a weight function $w:V \to R^+$, constant $k$. then $\langle G,f,k\rangle$ belongs to WVC if $G$ has a vertex cover of total weight of most $k$.
+- VC: given a graph $G(V,E)$ and integer $K$. Then $\langle G,K \rangle$ belongs to VC if $G$ has a vertex cover of size at most $K$.
 	- נניח שידוע ש-$VC$ שפה NP שלמה. הוכיחו ש-$WVC$ שפה NP שלמה.
 	- **תשובה:** 
 - ב. הוכיחו שהשפה $\text{HALF-CLIQUE}$ היא שפה NP שלמה.
