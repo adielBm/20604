@@ -246,7 +246,9 @@ $\text{DOUBLE-SAT} = \{\langle \phi \rangle | \phi \text{ is a Boolean formula w
 
 - א. האם השפה $L$ הבאה ניתנת להכרעה? הוכיחו.
 $L = \{\langle M \rangle | M \text{ is a TM s.t. there exists some input on which } M \text{ makes at least } 5 \text{ steps}\}$
-	- **תשובה:**
+	- **תשובה:** 
+	- https://www.cs.rice.edu/~nakhleh/COMP481/final_review_sp06_sol.pdf
+	- https://www.cs.rice.edu/~nakhleh/COMP481/final_review_sp06.pdf
 - ב. תהי $L$ שפה הניתנת לזיהוי על ידי מ"ט ותהי $L$ משלים שפה שלא ניתנת לזיהוי על ידי מ"ט. נסתכל בשפה הבאה: $L' = \{0w \mid w \in L\} \cup \{1w \mid w \notin L\}$. האם $L'$ – ניתנת להכרעה? ניתנת לזיהוי? הוכיחו.
 	- **תשובה:**
 

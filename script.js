@@ -39,14 +39,14 @@ document.addEventListener("DOMContentLoaded", function () {
             li.appendChild(span);
 
             // Apply styles
-            span.style.filter = 'blur(5px)';
-            li.style.cursor = 'pointer';
+            // span.style.filter = 'blur(5px)';
+            // li.style.cursor = 'pointer';
             li.style.background = '#2a73f014';
             // Remove blur on click
-            li.addEventListener('click', () => {
-                span.style.filter = 'none';
-                li.style.cursor = 'auto'; // or 'default'
-            });
+            // li.addEventListener('click', () => {
+            //     span.style.filter = 'none';
+            //     li.style.cursor = 'auto'; // or 'default'
+            // });
         }
     });
 
