@@ -24,16 +24,22 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pandoc
 
-      # Step 3: Convert index.md to index.html
-      - name: Convert Markdown to HTML
+      # Step 3: Create a build directory and convert Markdown to HTML
+      - name: Build Site
         run: |
-          pandoc index.md -o index.html --standalone --mathjax --resource-path=.:images
+          mkdir _site
+          pandoc index.md -o _site/index.html --standalone --mathjax --resource-path=.:images
+          # Copy other necessary assets to the _site directory
+          cp README.md _site/ # If you want README to be part of the site
+          cp script.js _site/
+          cp style.css _site/
+          cp -r images _site/ # Copy the entire images directory
 
       # Step 4: Deploy to GitHub Pages
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .  # Deploy from the root directory
-          force_orphan: true  # Optional: Keeps only the latest deploy
-          publish_branch: gh-pages  # Explicitly specify the branch
+          publish_dir: _site  # Deploy from the new _site directory
+          force_orphan: true
+          publish_branch: gh-pages
