@@ -75,6 +75,7 @@ $\text{LPATH} = \{\langle G, a, b, k \rangle | G \text{ contains a simple path o
 				- נדפיס את $\langle G, a, b, k \rangle$."
 			- אם $\langle G, a, b \rangle\in \text{UHAMPATH}$, אזי $G$ מכיל מסלול המילטוני באורך $k$, מ- $a$ ל- $b$, אזי $\langle G, a, b, k \rangle\in \text{LPATH}$.
 			- אם $\langle G, a, b, k \rangle\in \text{LPATH}$, אזי $G$ מכיל מסלול פשוט באורך $k$, מ- $a$ ל- $b$, אבל ל-$G$ יש $k$ צמתים, אזי המסלול הוא מסלול המילטוני, כלומר $\langle G, a, b \rangle\in \text{UHAMPATH}$.
+
 ## שאלה 4
 
 - א. הוכיחו או הפריכו: "נתון שהשפות $L_1$ ו-$L_2$ ניתנות להכרעה. כמו כן ידוע ש- $L_1\subseteq L \subseteq L_2$. אזי $L$ ניתנת להכרעה."
