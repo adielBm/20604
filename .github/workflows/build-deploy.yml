@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+    runs-on: ubuntu-latest
 
     steps:
       # Step 1: Check out the repository code
@@ -30,7 +30,7 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # Automatically provided by GitHub
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .  # Deploy from the root directory
-          force_orphan: true  # Optional: Keeps only the latest deploy, reduces history clutter
-          publish_branch: gh-pages
+          force_orphan: true  # Optional: Keeps only the latest deploy
+          publish_branch: gh-pages  # Explicitly specify the branch
