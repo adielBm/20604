@@ -28,7 +28,9 @@ jobs:
       - name: Build Site
         run: |
           mkdir _site
-          pandoc index.md -o _site/index.html --standalone --mathjax --resource-path=.:images
+          pandoc index.md -o _site/index.html --standalone \
+            --mathjax=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js \
+            --resource-path=.:images
           # Copy other necessary assets to the _site directory
           cp README.md _site/ # If you want README to be part of the site
           cp script.js _site/
