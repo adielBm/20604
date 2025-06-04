@@ -41,7 +41,13 @@ document.addEventListener("DOMContentLoaded", function () {
             // Apply styles
             // span.style.filter = 'blur(5px)';
             // li.style.cursor = 'pointer';
-            li.style.background = '#2a73f014';
+
+            li.style.background = 'rgba(42, 115, 240, 0.08)';
+            li.style.margin = '2em';
+            li.style.padding = '.5em';
+            li.style.borderRadius = '.5em';
+            li.style.listStyle = 'none';
+
             // Remove blur on click
             // li.addEventListener('click', () => {
             //     span.style.filter = 'none';

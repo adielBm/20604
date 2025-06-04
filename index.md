@@ -271,11 +271,23 @@ $\text{DOUBLE-SAT} = \{\langle \phi \rangle | \phi \text{ is a Boolean formula w
 		- הסבר: השפה $A^*$ היא השפה המתקבלת על ידי חיבור אפס או יותר מחרוזות של השפה $A$. לכן, ניתן להוסיף כלל חדש $S' \to S S'$ שמאפשר לייצר מחרוזות של $A$ ברצף, ואפשר גם לסיים את הגזירה עם $\varepsilon$, כלומר לא לייצר מחרוזת כלל.
 - ב. אנו מבצעים תהליך מעבר CFG לדקדוק בצורת חומסקי. 
 	- לאחר מספר צעדים התקבל הדקדוק הבא:
-	- $S_0 \to S$
-	- $S \to 1S A 0 A \mid 0A S1 S \mid \varepsilon$
-	- $A \to 10S1 \mid \varepsilon$
+		- $S_0 \to S$
+		- $S \to 1S A 0 A \mid 0A S1 S \mid \varepsilon$
+		- $A \to 10S1 \mid \varepsilon$
 	- בצעד הבא רוצים לסלק מעבר אפסילון $A\to \varepsilon$. רשמו דקדוק שיתקבל לאחר צעד זה.
-- ג. בנו PDA עבור השפה הבאה: $L = \{b^ia^j | i \ge j \ge 0\}$. הסבירו את הפתרון.
+	- **תשובה:**
+		- $S_0 \to S$
+		- $S \to 1S A 0 A \mid 0A S1 S \mid  \mathbf{ 1SA0B } \mid \mathbf{1S0A}\mid \mathbf{1S0}\mid \mathbf{0S1 S}\mid \varepsilon$
+		- $A \to 10S1\mid\cancel{ {\color{red}\varepsilon} }$
+- ג. בנו PDA עבור השפה הבאה: $L = \{b^ia^j \mid i \ge j \ge 0\}$. הסבירו את הפתרון.
+	- **תשובה:**
+		- ![[img6.png]]
+		- בהתחלה, דוחפים למחסנית $\$$ כדי לסמן את תחילת המחסנית.
+		- לכל $b$ שקוראים בסרט, דוחפים למחסנית $*$.
+		- אחר כך עוברים ל-$a$ים, כל $a$ שקוראים בסרט, מוצאים $*$ מהמחסנית. 
+		- בסוף הסרט: 
+			- אם קוראים $\$$ מהמחסנית, אז מקבלים. כי זה אומר ש $i=j$.
+			- אם קוראים $*$ מהמחסנית, אז מקבלים. כי זה אומר ש $i>j$.
 - ד. נתון CFG הבא: $S \to S+S \mid S-S \mid S \times S \mid S/S \mid (S) \mid -S \mid 0 \mid 1 \mid \cdots \mid 9$. האם את הסדרות הבאות: $4 - - 5, 2 + - 5$. אפשר לגזור בדקדוק זה? אם כן בנו עצי גזירה עבורן.
 
 ## שאלה 3
@@ -303,6 +315,8 @@ $L = \{\langle M \rangle | M \text{ is a TM s.t. there exists some input on whic
 # מועד 2025a-64  
 
 #todo 
+
+
 
 
 # מועד 2025a-84 
