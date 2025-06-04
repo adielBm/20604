@@ -1,46 +1,57 @@
-name: Build and Deploy Pandoc Site
+name: Deploy Pandoc Site
 
+# Trigger on any push to the master branch
 on:
   push:
     branches:
-      - master # Triggers the workflow on pushes to the master branch
+      - master
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest # Uses the latest Ubuntu runner
-    permissions:
-      contents: write # Allows the action to write to the repository (for gh-pages branch)
-      pages: write    # Allows the action to deploy to GitHub Pages
-      id-token: write # Allows OIDC authentication for GitHub Pages
+    runs-on: ubuntu-latest
+
     steps:
+      # 1. Check out the repository (so that the workflow can see index.md, style.css, etc.)
       - name: Checkout repository
-        uses: actions/checkout@v4 # Checks out your repository's code
+        uses: actions/checkout@v3
 
-      - name: Set up Pandoc
-        uses: r-lib/actions/setup-pandoc@v2 # Sets up Pandoc
-        with:
-          pandoc-version: 'latest' # You can specify a version or use latest
-
-      - name: Convert Markdown to HTML with Pandoc
+      # 2. Install Pandoc via apt
+      - name: Install Pandoc
         run: |
-          pandoc index.md -o index.html --standalone \
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+
+      # 3. Run the Pandoc command exactly as you specified
+      - name: Generate HTML with Pandoc
+        run: |
+          pandoc index.md \
+            -o index.html \
+            --standalone \
             --mathjax=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js \
             --resource-path=.:images
-        # This is your provided Pandoc command
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3 # Uploads the generated HTML file as an artifact
+      # 4. Prepare a "public/" directory that contains exactly what we want to publish:
+      #    - index.html (just generated)
+      #    - style.css
+      #    - script.js
+      #    - the entire images/ folder (so that any embedded images still resolve)
+      - name: Collect static assets into public/
+        run: |
+          mkdir public
+          cp index.html public/
+          cp style.css public/
+          cp script.js public/
+          cp -R images public/
+
+      # 5. Deploy to the gh-pages branch using peaceiris/actions-gh-pages
+      - name: Publish to GitHub Pages (gh-pages branch)
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          path: '.' # Specifies the path to the files to upload (index.html and potentially images if needed by the HTML directly)
-          # Ensure your index.html correctly references images in the deployed structure.
-          # If images are in the 'images' folder and referenced as 'images/myimage.png' in index.md,
-          # and Pandoc embeds them or resolves paths correctly for a flat structure with index.html, this should be fine.
-          # If index.html expects images to be in an 'images' subfolder relative to it on the server,
-          # you might need to adjust the path or ensure the 'images' folder is also part of the artifact.
-          # For simplicity, if index.html can find images from its root, uploading '.' which includes index.html
-          # and the 'images' folder (if your resource-path setting handles it correctly for local build)
-          # should work. A common pattern is to have all static assets needed by index.html in the artifact.
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4 # Deploys the artifact to GitHub Pages
+          # This token is provided automatically by GitHub Actions; no extra setup needed.
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Publish everything under the `public/` directory
+          publish_dir: public
+          # By default, the action will push to gh-pages. If your repository is
+          # already serving from gh-pages, you do not need to change this.
+          # If you prefer a different branch name, you can add:
+          #   publish_branch: your-branch-name
