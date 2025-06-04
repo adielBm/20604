@@ -260,6 +260,8 @@ $\text{DOUBLE-SAT} = \{\langle \phi \rangle | \phi \text{ is a Boolean formula w
 	- **תשובה:** $(aa\cup b)a^* ba^*$
 
 
+
+
 ## שאלה 2
 
 - א. תהי $A$ שפה חסרת הקשר המיוצרת בעזרת דקדוק חסר-הקשר $G = (V, \Sigma, R, S)$. בנו דקדוק חסר הקשר $G'$ המייצר את השפה $A^*$. נמקו.
