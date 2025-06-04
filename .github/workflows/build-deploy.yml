@@ -2,46 +2,51 @@ name: Build and Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - master  # Trigger on pushes to the master branch
-  workflow_dispatch:  # Allow manual triggering
+    branches: [ master ]
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      # Step 1: Check out the repository code
-      - name: Checkout
-        uses: actions/checkout@v4
+    - name: Checkout
+      uses: actions/checkout@v4
 
-      # Step 2: Set up Pandoc
-      - name: Install Pandoc
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y pandoc
+    - name: Install Pandoc
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y pandoc
 
-      # Step 3: Create a build directory and convert Markdown to HTML
-      - name: Build Site
-        run: |
-          mkdir _site
-          pandoc index.md -o _site/index.html --standalone \
-            --mathjax=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js \
-            --resource-path=.:images
-          # Copy other necessary assets to the _site directory
-          cp README.md _site/ # If you want README to be part of the site
-          cp script.js _site/
-          cp style.css _site/
-          cp -r images _site/ # Copy the entire images directory
+    - name: Convert Markdown to HTML
+      run: |
+        pandoc index.md -o index.html --standalone \
+          --mathjax=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js \
+          --resource-path=.:images
 
-      # Step 4: Deploy to GitHub Pages
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: _site  # Deploy from the new _site directory
-          force_orphan: true
-          publish_branch: gh-pages
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: '.'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
