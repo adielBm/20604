@@ -1,52 +1,46 @@
-name: Build and Deploy to GitHub Pages
+name: Build and Deploy Pandoc Site
 
 on:
   push:
-    branches: [ master ]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+    branches:
+      - master # Triggers the workflow on pushes to the master branch
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  build-and-deploy:
+    runs-on: ubuntu-latest # Uses the latest Ubuntu runner
+    permissions:
+      contents: write # Allows the action to write to the repository (for gh-pages branch)
+      pages: write    # Allows the action to deploy to GitHub Pages
+      id-token: write # Allows OIDC authentication for GitHub Pages
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4 # Checks out your repository's code
 
-    - name: Install Pandoc
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y pandoc
+      - name: Set up Pandoc
+        uses: r-lib/actions/setup-pandoc@v2 # Sets up Pandoc
+        with:
+          pandoc-version: 'latest' # You can specify a version or use latest
 
-    - name: Convert Markdown to HTML
-      run: |
-        pandoc index.md -o index.html --standalone \
-          --mathjax=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js \
-          --resource-path=.:images
+      - name: Convert Markdown to HTML with Pandoc
+        run: |
+          pandoc index.md -o index.html --standalone \
+            --mathjax=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js \
+            --resource-path=.:images
+        # This is your provided Pandoc command
 
-    - name: Setup Pages
-      uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3 # Uploads the generated HTML file as an artifact
+        with:
+          path: '.' # Specifies the path to the files to upload (index.html and potentially images if needed by the HTML directly)
+          # Ensure your index.html correctly references images in the deployed structure.
+          # If images are in the 'images' folder and referenced as 'images/myimage.png' in index.md,
+          # and Pandoc embeds them or resolves paths correctly for a flat structure with index.html, this should be fine.
+          # If index.html expects images to be in an 'images' subfolder relative to it on the server,
+          # you might need to adjust the path or ensure the 'images' folder is also part of the artifact.
+          # For simplicity, if index.html can find images from its root, uploading '.' which includes index.html
+          # and the 'images' folder (if your resource-path setting handles it correctly for local build)
+          # should work. A common pattern is to have all static assets needed by index.html in the artifact.
 
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: '.'
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 # Deploys the artifact to GitHub Pages
