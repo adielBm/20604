@@ -1,21 +1,37 @@
 html {
     background: #f8fbff;
 }
+
 body {
     direction: rtl;
     font-family: sans-serif;
     line-height: 1.7;
     background: white;
-	max-width: 50em;
+    max-width: 50em;
 }
-h1, h2, h3, h4, h5, h6, strong, b b { 
-	color: #2a73f0;
+
+em {
+    font-weight: bold;
+    font-style: normal;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b b {
+    color: #2a73f0;
+}
+
 img {
     max-width: 25em;
     margin: 0 auto;
     display: block;
 }
+
 span.subq {
     font-size: 20px;
     color: #2a73f0;
@@ -24,5 +40,41 @@ span.subq {
 }
 
 html.dark {
-filter: invert(1) hue-rotate(180deg);
+    filter: invert(1) hue-rotate(180deg);
+}
+
+.answer {
+    background: rgba(42, 115, 240, 0.08);
+    margin: 2em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    list-style: none;
+}
+
+@media screen and (max-width: 1000px) {
+    .answer {
+        margin: 2em 0;
+        padding: 0.5em 0;
+    }
+    img {
+        max-width: 100%;
+    }
+
+    p,
+    li,
+    img,
+    ul,
+    ol {
+        margin-left: auto;
+        padding-left: 0;
+        overflow-x: auto;
+}
+
+    ul {
+    padding-right: .5em;
+    }
+
+    body {
+        padding: 0.4em;
+    }
 }

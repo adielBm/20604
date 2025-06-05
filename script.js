@@ -42,11 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
             // span.style.filter = 'blur(5px)';
             // li.style.cursor = 'pointer';
 
-            li.style.background = 'rgba(42, 115, 240, 0.08)';
-            li.style.margin = '2em';
-            li.style.padding = '.5em';
-            li.style.borderRadius = '.5em';
-            li.style.listStyle = 'none';
+        
+            li.className = 'answer';
 
             // Remove blur on click
             // li.addEventListener('click', () => {

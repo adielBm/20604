@@ -321,8 +321,8 @@ $L = \{\langle M \rangle | M \text{ is a TM s.t. there exists some input on whic
 ## שאלה 4
 
 - א. נסתכל ב-2 שפות הבאות:
-- WVC: given a graph $G(V,E)$, a weight function $w:V \to R^+$, constant $k$. then $\langle G,f,k\rangle$ belongs to WVC if $G$ has a vertex cover of total weight of most $k$.
-- VC: given a graph $G(V,E)$ and integer $k$. Then $\langle G,k \rangle$ belongs to VC if $G$ has a vertex cover of size at most $k$.
+	- WVC: given a graph $G(V,E)$, a weight function $w:V \to R^+$, constant $k$. then $\langle G,f,k\rangle$ belongs to WVC if $G$ has a vertex cover of total weight of most $k$.
+	- VC: given a graph $G(V,E)$ and integer $k$. Then $\langle G,k \rangle$ belongs to VC if $G$ has a vertex cover of size at most $k$.
 	- נניח שידוע ש-$\text{VC}$ שפה NP שלמה. הוכיחו ש-$\text{WVC}$ שפה NP שלמה.
 	- **תשובה:** 
 		- נראה רדוקציה פולי' מ- $\text{VC}$ ל- $\text{WVC}$. כלומר נראה ש: $\text{VC} \leq_p \text{WVC}$.
@@ -330,7 +330,7 @@ $L = \{\langle M \rangle | M \text{ is a TM s.t. there exists some input on whic
 		- בבירור $\langle G,k \rangle \in \text{VC} \iff f(\langle G,k\rangle)=\langle G,w,k \rangle \in \text{WVC}$. והפונקציה ניתנתה לחישוב בזמן פולינומיאלי.
 - ב. הוכיחו שהשפה $\text{HALF-CLIQUE}$ היא שפה NP שלמה.
 	- גרף $G(V,E)$ לא מכוון שייך לשפה $\text{HALF-CLIQUE}$ אם קיימת ב-$G$ קליקה שמכילה חצי מהצמתים שלו.
-	- **רמז**: רדוקציה מהבעייה $\text{Clique}$. $\langle G,k \rangle$ שייך לשפה אם בגרף לא מכוון יש קליקה בגודל $k$.
+	- רמז: רדוקציה מהבעייה $\text{Clique}$. $\langle G,k \rangle$ שייך לשפה אם בגרף לא מכוון יש קליקה בגודל $k$.
 	- **תשובה:** 
 		- ראשית, $\text{HALF-CLIQUE} \in \text{NP}$, כי בהינתן קבוצת צמתים בגודל $\frac{|V|}{2}$, ניתן לבדוק בזמן פולינומיאלי $O(|V|^2)$ אם יש קשת בין כל זוג צמתים בקבוצה זו.
 		- נראה רדוקציה פולי' מ- $\text{Clique}$ ל- $\text{HALF-CLIQUE}$. כלומר נראה ש: $\text{Clique} \leq_p \text{HALF-CLIQUE}$.
@@ -346,14 +346,72 @@ $L = \{\langle M \rangle | M \text{ is a TM s.t. there exists some input on whic
 
 # מועד 2025a-64  
 
-#todo 
+## שאלה 1
+
+- א. בנו אוטומט סופי מעל הא"ב הבינרי $\{0,1\}$ המקבל את כל המחזורות שבהן מופיעה התת מחזורת $111$ בדיוק פעם אחת. (לצורך ההבהרה האוטומט לא יקבל מחרוזת שקיימת בה התת-מחרוזת $1111$)
+	- **תשובה:** 
+- ב. בנו ביטוי רגולרי עבור כל אחת מהשפות הבאות. תנו הסבר קצר לתשובה.
+	- $B=\{ w \in \{ 0,1 \}^* \mid |w| \text{ is a multiple of }3 \}$.
+	- $C=\{ w \in \{ 0,1 \}^* \mid |w| \text{ has at least two 0 or at most one 1} \}$.
+	- **תשובה:** 
+- ג. ( יהיו $A,B$ שפות מעל אותו א"ב. ידוע ש-$AB$ ($A$ שרשור $B$) היא שפה רגולרית. האם בהכרח $A$ שפה רגולרית? הסבירו.
+	- תזכורת: $AB=\{ w \mid w=ab, a \in A, b \in B \}$.
+	- **תשובה:** 
 
 
+## שאלה 2
 
+- א. האם השפה הבאה היא שפה חסרת-הקשר? הוכיחו את תשובתכם.
+	- $L=\{a^kb^nc^m: k,n,m \geq 0, n\leq k \leq m\}$. 
+	- **תשובה:** 
+- ב. בנו PDA עבור השפה הבאה:
+	- $L=\{a^kb^nc^m: k,n,m \geq 0, m=\left\lfloor \frac{k+n}{2} \right\rfloor\}$.
+	- כאשר $\left\lfloor x \right\rfloor$ מציין את הערך השלם של $x$. כלומר העיגול של $x$ כלפי מטה למספר שלם.
+	- **תשובה:** 
+- ג. בנו CFG עבור שפת המילים הבינאריות שבהן מספר האפסים גדול בדיוק פי 2 ממספר האחדים.
+	- **תשובה:** 
+
+## שאלה 3
+
+- א. הוכיחו או הפריכו: אם $L$ שפה ניתנת לזיהוי-טיורינג, אזי גם השפה $L^*$ ניתנת לזיהוי- טיורינג.
+	- **תשובה:** 
+- ב. האם השפה הבאה $R$ ניתנת להכרעה? מדוע?
+	- $R=\{ \langle a,b,c \rangle : a,b,c \text{ are regular expressions and } L(aa\cup bb)=L(cc) \}$.
+	- כלומר $\langle a,b,c \rangle$ שייכת ל-$R$ אם השפה המתוארת על ידי הביטוי הרגולרי $aa\cup bb$ שווה לשפה המתוארת על ידי הביטוי הרגולרי $cc$.
+	- דוגמה: $\langle \varepsilon,1^*,1^* \rangle \in R$.
+	- **תשובה:**
+
+
+## שאלה 4
+
+- א. מצאו מצאו ביטוי רגולרי המתאר את השפה שמקבל ה-DFA הבא:
+	- ![](images/img7.png)
+	- יש לפתור את השאלה לפי ההנחיות הבאות:
+		- 1. הפכו את ה0 DFA ל- GNFA בן 4 מצבים.
+		- 2. סלקו את מצב $q_1$.
+		- 3. סלקו את מצב $q_0$. 
+		- 4. רשמו את הביטוי הרגולרי שהתקבל.
+	- **תשובה:**
+- ב. הוכיחו שהשפה $\text{EQ}_{\text{TM}}$ אינה ניתנת להכרעה; עשו זאת באמצעות רדוקציה מהשפה $\text{E}_{\text{TM}}$.
+	- $\text{E}_{\text{TM}} = \{\langle M \rangle : M \text{ is a TM that with } L(M)=\emptyset \}$.
+	- $\text{EQ}_{\text{TM}} = \{\langle M_1,M_2 \rangle : M_1,M_2\text{ are TM with }L(M_1) = L(M_2) \}$.
+	- **תשובה:**
+
+## שאלה 5 
+
+- יהי $G$ גרף לא מכוון. צביעה של $G$ ב- 3 צבעים נקראת _כמעט תקינה_ אם ישנה לכל היותר צלע אחת ששני הקודקודים בקצות הצלע צבועים באותו צבע. נגדיר את השפה הבאה:
+	- $L=\{\langle G \rangle :$ גרף שיש לו צביעה כמעט תקינה ב- 3 צבעים $G$$\}$. 
+	- תזכורת: צביעה נקראת _תקינה_ אם לכל שני קודקודים שכנים יש צבע שונה.
+	- א. האם $L$ שייכת ל-NP? הוכיחו. 
+		- **תשובה:**
+	- ב. הראו כי ישנו גרף בן 4 קודקודים שאין לו צביעה תקינה ב- 3 צבעים. אבל יש לו צביעה כמעט תקינה ב- 3 צבעים.
+		- **תשובה:**
+	- ג. האם $L$ שפה NP-שלמה? הוכיחו או הפריכו.
+		- **תשובה:**
 
 # מועד 2025a-84 
 
-
-#todo 
+בהמשך...
+ 
 
 
