@@ -899,7 +899,7 @@ S}\mid \varepsilon\)</span></li>
 <ul>
 <li><strong>תשובה:</strong>
 <ul>
-<li>[[img6.png]]</li>
+<li><img src="images/img6.png" /></li>
 <li>בהתחלה, דוחפים למחסנית <span class="math inline">\(\$\)</span> כדי
 לסמן את תחילת המחסנית.</li>
 <li>לכל <span class="math inline">\(b\)</span> שקוראים בסרט, דוחפים
@@ -918,8 +918,19 @@ class="math inline">\(*\)</span> מהמחסנית.</li>
 </ul></li>
 <li>ד. נתון CFG הבא: <span class="math inline">\(S \to S+S \mid S-S \mid
 S \times S \mid S/S \mid (S) \mid -S \mid 0 \mid 1 \mid \cdots \mid
-9\)</span>. האם את הסדרות הבאות: <span class="math inline">\(4 - - 5, 2
-+ - 5\)</span>. אפשר לגזור בדקדוק זה? אם כן בנו עצי גזירה עבורן.</li>
+9\)</span>. האם את הסדרות הבאות אפשר לגזור בדקדוק זה? אם כן בנו עצי
+גזירה עבורן.
+<ul>
+<li><span class="math inline">\(---5\)</span></li>
+<li><span class="math inline">\(2+--4\)</span></li>
+<li><strong>תשובה:</strong> אפשר לגזור את שתיהן.
+<ul>
+<li><span class="math inline">\(S \quad\to\quad -S \quad\to\quad --S
+\quad\to\quad ---S\quad\to\quad---5\quad\)</span></li>
+<li><span class="math inline">\(S \quad\to\quad S + S \quad\to\quad 2 +
+-S \quad\to\quad 2 + --S \quad\to\quad 2 + --4\)</span></li>
+</ul></li>
+</ul></li>
 </ul>
 <h2 id="שאלה-3-3">שאלה 3</h2>
 <ul>
@@ -928,16 +939,68 @@ S \times S \mid S/S \mid (S) \mid -S \mid 0 \mid 1 \mid \cdots \mid
 \text{ is a TM s.t. there exists some input on which } M \text{ makes at
 least } 5 \text{ steps}\}\)</span>
 <ul>
-<li><strong>תשובה:</strong></li>
+<li><strong>תשובה:</strong>
+<ul>
+<li><span class="math inline">\(\text{``On input }\langle M
+\rangle\)</span>: (where <span class="math inline">\(\Sigma\)</span> is
+the input alphabet of <span class="math inline">\(M\)</span>)
+<ul>
+<li>For each input <span class="math inline">\(\displaystyle w\in
+\bigcup_{i=0}^{5}\Sigma^i\)</span> : (כל הרישות באורך 5 לכל היותר )
+<ul>
+<li>Simulate <span class="math inline">\(M\)</span> on <span
+class="math inline">\(w\)</span> for at most <span
+class="math inline">\(5\)</span> steps. If <span
+class="math inline">\(M\)</span> does not halt in step 4, then
+<em>accept</em>.</li>
+</ul></li>
+<li><em>Reject</em>. <span
+class="math inline">\(\text{&#39;&#39;}\)</span><br />
+</li>
+</ul></li>
+<li>האלגוריתם בסוף יסתיים כי יש מספר סופי של קלטים באורך 5 לכל היותר מעל
+אלפבית סופי וגם כי יש מספר סופי של צעדים שעל כל קלט מריצים את M. אם
+עברנו על כל הקלטים האפשריים ולא קיבלנו, אז דוחים.</li>
+</ul></li>
 </ul></li>
 <li>ב. תהי <span class="math inline">\(L\)</span> שפה הניתנת לזיהוי על
-ידי מ”ט ותהי <span class="math inline">\(L\)</span> משלים שפה שלא ניתנת
-לזיהוי על ידי מ”ט. נסתכל בשפה הבאה: <span class="math inline">\(L&#39; =
-\{0w \mid w \in L\} \cup \{1w \mid w \notin L\}\)</span>. האם <span
-class="math inline">\(L&#39;\)</span> – ניתנת להכרעה? ניתנת לזיהוי?
-הוכיחו.
+ידי מ”ט ותהי <span class="math inline">\(\overline{L}\)</span> שפה שלא
+ניתנת לזיהוי על ידי מ”ט. נסתכל בשפה הבאה: <span
+class="math inline">\(L&#39; = \{0w \mid w \in L\} \cup \{1w \mid w
+\notin L\}\)</span>. האם <span class="math inline">\(L&#39;\)</span> –
+ניתנת להכרעה? ניתנת לזיהוי? הוכיחו.
 <ul>
-<li><strong>תשובה:</strong></li>
+<li><strong>תשובה:</strong>
+<ul>
+<li>נניח בשלילה ש- <span class="math inline">\(L&#39;\)</span> ניתנת
+לזיהוי.
+<ul>
+<li>אזי קיימת מ”ט <span class="math inline">\(M&#39;\)</span> שמזהה את
+<span class="math inline">\(L&#39;\)</span>.</li>
+<li>נבנה מ”ט <span class="math inline">\(M\)</span>: “עבור כל קלט <span
+class="math inline">\(w\)</span>:
+<ul>
+<li>נריץ את <span class="math inline">\(M&#39;\)</span> על <span
+class="math inline">\(1w\)</span>, אם <span
+class="math inline">\(M&#39;\)</span> מקבל, נקבל. אם <span
+class="math inline">\(M&#39;\)</span> דוחה, נדחה.”</li>
+</ul></li>
+<li>אם <span class="math inline">\(w\in \overline {L}\)</span>, אז <span
+class="math inline">\(w\notin L\)</span>, ולכן <span
+class="math inline">\(1w\in L&#39;\)</span> ולכן <span
+class="math inline">\(M&#39;\)</span> מקבל את <span
+class="math inline">\(1w\)</span>, ולכן <span
+class="math inline">\(M\)</span> מקבל את <span
+class="math inline">\(w\)</span>.</li>
+<li>אם כן מצאנו מ”ט <span class="math inline">\(M\)</span> המזהה את
+<span class="math inline">\(\overline{L}\)</span>. בסתירה לנתון
+בשאלה.</li>
+<li>מסקנה: <span class="math inline">\(L&#39;\)</span> אינה ניתנת
+לזיהוי.</li>
+<li>לכן, <span class="math inline">\(L&#39;\)</span> גם אינה ניתנת
+להכרעה.</li>
+</ul></li>
+</ul></li>
 </ul></li>
 </ul>
 <h2 id="שאלה-4-3">שאלה 4</h2>
@@ -950,14 +1013,26 @@ class="math inline">\(\langle G,f,k\rangle\)</span> belongs to WVC if
 <span class="math inline">\(G\)</span> has a vertex cover of total
 weight of most <span class="math inline">\(k\)</span>.</li>
 <li>VC: given a graph <span class="math inline">\(G(V,E)\)</span> and
-integer <span class="math inline">\(K\)</span>. Then <span
-class="math inline">\(\langle G,K \rangle\)</span> belongs to VC if
+integer <span class="math inline">\(k\)</span>. Then <span
+class="math inline">\(\langle G,k \rangle\)</span> belongs to VC if
 <span class="math inline">\(G\)</span> has a vertex cover of size at
-most <span class="math inline">\(K\)</span>.
+most <span class="math inline">\(k\)</span>.
 <ul>
-<li>נניח שידוע ש-<span class="math inline">\(VC\)</span> שפה NP שלמה.
-הוכיחו ש-<span class="math inline">\(WVC\)</span> שפה NP שלמה.</li>
-<li><strong>תשובה:</strong></li>
+<li>נניח שידוע ש-<span class="math inline">\(\text{VC}\)</span> שפה NP
+שלמה. הוכיחו ש-<span class="math inline">\(\text{WVC}\)</span> שפה NP
+שלמה.</li>
+<li><strong>תשובה:</strong>
+<ul>
+<li>נראה רדוקציה פולי’ מ- <span class="math inline">\(\text{VC}\)</span>
+ל- <span class="math inline">\(\text{WVC}\)</span>. כלומר נראה ש: <span
+class="math inline">\(\text{VC} \leq_p \text{WVC}\)</span>.</li>
+<li>נגדיר פונקציה כך: <span class="math inline">\(f(\langle G,k\rangle)=
+(G,w,k)\)</span>, כאשר <span class="math inline">\(w(v) = 1\)</span> לכל
+<span class="math inline">\(v\in V\)</span>.</li>
+<li>בבירור <span class="math inline">\(\langle G,k \rangle \in \text{VC}
+\iff f(\langle G,k\rangle)=\langle G,w,k \rangle \in
+\text{WVC}\)</span>. והפונקציה ניתנתה לחישוב בזמן פולינומיאלי.</li>
+</ul></li>
 </ul></li>
 <li>ב. הוכיחו שהשפה <span
 class="math inline">\(\text{HALF-CLIQUE}\)</span> היא שפה NP שלמה.
@@ -968,8 +1043,68 @@ class="math inline">\(G\)</span> קליקה שמכילה חצי מהצמתים �
 <li><strong>רמז</strong>: רדוקציה מהבעייה <span
 class="math inline">\(\text{Clique}\)</span>. <span
 class="math inline">\(\langle G,k \rangle\)</span> שייך לשפה אם בגרף לא
-מכוון יש קליקה בגודל <span class="math inline">\(K\)</span>.</li>
-<li><strong>תשובה:</strong></li>
+מכוון יש קליקה בגודל <span class="math inline">\(k\)</span>.</li>
+<li><strong>תשובה:</strong>
+<ul>
+<li>ראשית, <span class="math inline">\(\text{HALF-CLIQUE} \in
+\text{NP}\)</span>, כי בהינתן קבוצת צמתים בגודל <span
+class="math inline">\(\frac{|V|}{2}\)</span>, ניתן לבדוק בזמן
+פולינומיאלי <span class="math inline">\(O(|V|^2)\)</span> אם יש קשת בין
+כל זוג צמתים בקבוצה זו.</li>
+<li>נראה רדוקציה פולי’ מ- <span
+class="math inline">\(\text{Clique}\)</span> ל- <span
+class="math inline">\(\text{HALF-CLIQUE}\)</span>. כלומר נראה ש: <span
+class="math inline">\(\text{Clique} \leq_p
+\text{HALF-CLIQUE}\)</span>.</li>
+<li>נגדיר פונקציה כך: <span class="math inline">\(f(\langle
+G=(V,E),k\rangle)= \langle G&#39;=(V&#39;,E&#39;)\rangle\)</span>, כאשר:
+<ul>
+<li>אם <span class="math inline">\(k=\frac{|V|}{2}\)</span> : נגדיר את
+<span class="math inline">\(G&#39;=(V&#39;,E&#39;)\)</span> להיות גרף עם
+<span class="math inline">\(E=E&#39;\)</span> ו- <span
+class="math inline">\(V&#39;=V\)</span>.</li>
+<li>אם <span class="math inline">\(k&gt; \frac{|V|}{2}\)</span> : נגדיר
+את <span class="math inline">\(G&#39;=(V&#39;,E&#39;)\)</span> להיות גרף
+עם <span class="math inline">\(E=E&#39;\)</span> ו- <span
+class="math inline">\(V&#39;\)</span> יכיל את הצמתים של <span
+class="math inline">\(G\)</span> וגם נוסיף לו <span
+class="math inline">\(j\)</span> צמתים חדשים (שלא מחוברים לשום צומת
+אחר), כאשר <span class="math inline">\(j=2k- |V|\)</span>. (ואז מתקיים
+<span
+class="math inline">\(k=\frac{|V|+j}{2}=\frac{|V&#39;|}{2}\)</span>).
+<ul>
+<li>מתקיים ש: ל- <span class="math inline">\(G\)</span> יש קליקה בגודל
+<span class="math inline">\(k\)</span> אם ורק אם ל- <span
+class="math inline">\(G&#39;\)</span> יש קליקה בגודל <span
+class="math inline">\(\frac{|V&#39;|}{2}=k\)</span></li>
+</ul></li>
+<li>אם <span class="math inline">\(k&lt;\frac{|V|}{2}\)</span> : נגדיר
+את <span class="math inline">\(G&#39;=(V&#39;,E&#39;)\)</span> להיות גרף
+כאשר <span class="math inline">\(V&#39;\)</span> יכלול את כל הצמתים של
+<span class="math inline">\(G\)</span> וגם נוסיף לו <span
+class="math inline">\(j\)</span> צמתים חדשים, כאשר <span
+class="math inline">\(j=|V|-2k\)</span>. (ואז <span
+class="math inline">\(|V&#39;|=|V|+j=2|V|-2k\)</span>). ו- <span
+class="math inline">\(E&#39;\)</span> יכיל את כל הקשתות של <span
+class="math inline">\(G\)</span> וגם נוסיף קשתות בין כל <span
+class="math inline">\(j\)</span> הצמתים החדשים, וגם מכל צומת חדש לכל
+צומת ב- <span class="math inline">\(G\)</span>.
+<ul>
+<li>מתקיים ש: ל- <span class="math inline">\(G\)</span> יש קליקה בגודל
+<span class="math inline">\(k\)</span> אם ורק אם ל- <span
+class="math inline">\(G&#39;\)</span> יש קליקה בגודל <span
+class="math inline">\(k+j=|V|-k\)</span>.</li>
+</ul></li>
+<li>אם <span class="math inline">\(\langle
+G,k\rangle\in\text{Clique}\)</span>,</li>
+<li>אם כן: <span class="math inline">\(\langle
+G,k\rangle\in\text{Clique} \iff \langle
+G&#39;\rangle\in\text{HALF-CLIQUE}\)</span>.</li>
+<li>מאחר ש: CLIQUE היא NP-שלמה (מסקנה 7.43), נובע ש- <span
+class="math inline">\(\text{HALF-CLIQUE}\)</span> גם היא NP-שלמה (לפי
+משפט 7.36).</li>
+</ul></li>
+</ul></li>
 </ul></li>
 </ul>
 <h1 id="מועד-2025a-64">מועד 2025a-64</h1>
