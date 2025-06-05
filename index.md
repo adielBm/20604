@@ -282,36 +282,67 @@ $\text{DOUBLE-SAT} = \{\langle \phi \rangle | \phi \text{ is a Boolean formula w
 		- $A \to 10S1\mid\cancel{ {\color{red}\varepsilon} }$
 - ג. בנו PDA עבור השפה הבאה: $L = \{b^ia^j \mid i \ge j \ge 0\}$. הסבירו את הפתרון.
 	- **תשובה:**
-		- ![[img6.png]]
+		- ![](images/img6.png)
 		- בהתחלה, דוחפים למחסנית $\$$ כדי לסמן את תחילת המחסנית.
 		- לכל $b$ שקוראים בסרט, דוחפים למחסנית $*$.
 		- אחר כך עוברים ל-$a$ים, כל $a$ שקוראים בסרט, מוצאים $*$ מהמחסנית. 
 		- בסוף הסרט: 
 			- אם קוראים $\$$ מהמחסנית, אז מקבלים. כי זה אומר ש $i=j$.
 			- אם קוראים $*$ מהמחסנית, אז מקבלים. כי זה אומר ש $i>j$.
-- ד. נתון CFG הבא: $S \to S+S \mid S-S \mid S \times S \mid S/S \mid (S) \mid -S \mid 0 \mid 1 \mid \cdots \mid 9$. האם את הסדרות הבאות: $4 - - 5, 2 + - 5$. אפשר לגזור בדקדוק זה? אם כן בנו עצי גזירה עבורן.
+- ד. נתון CFG הבא: $S \to S+S \mid S-S \mid S \times S \mid S/S \mid (S) \mid -S \mid 0 \mid 1 \mid \cdots \mid 9$. האם את הסדרות הבאות אפשר לגזור בדקדוק זה? אם כן בנו עצי גזירה עבורן. 
+	- $---5$
+	- $2+--4$
+	- **תשובה:** אפשר לגזור את שתיהן. 
+		- $S \quad\to\quad -S \quad\to\quad --S \quad\to\quad ---S\quad\to\quad---5\quad$
+		- $S \quad\to\quad S + S  \quad\to\quad 2 + -S  \quad\to\quad 2 + --S \quad\to\quad 2 + --4$
 
 ## שאלה 3
 
 - א. האם השפה $L$ הבאה ניתנת להכרעה? הוכיחו.
 $L = \{\langle M \rangle | M \text{ is a TM s.t. there exists some input on which } M \text{ makes at least } 5 \text{ steps}\}$
 	- **תשובה:** 
-- ב. תהי $L$ שפה הניתנת לזיהוי על ידי מ"ט ותהי $L$ משלים שפה שלא ניתנת לזיהוי על ידי מ"ט. נסתכל בשפה הבאה: $L' = \{0w \mid w \in L\} \cup \{1w \mid w \notin L\}$. האם $L'$ – ניתנת להכרעה? ניתנת לזיהוי? הוכיחו.
-	- **תשובה:**
+		- $\text{``On input }\langle M \rangle$: (where $\Sigma$ is the input alphabet of $M$)
+			- For each input $\displaystyle w\in \bigcup_{i=0}^{5}\Sigma^i$ : (כל הרישות באורך 5 לכל היותר )
+				- Simulate $M$ on $w$ for at most $5$ steps. If $M$ does not halt in step 4, then _accept_. 
+			- _Reject_. $\text{''}$  
+		- האלגוריתם בסוף יסתיים כי יש מספר סופי של קלטים באורך 5 לכל היותר מעל אלפבית סופי וגם כי יש מספר סופי של צעדים שעל כל קלט מריצים את M. אם עברנו על כל הקלטים האפשריים ולא קיבלנו, אז דוחים. 
+- ב. תהי $L$ שפה הניתנת לזיהוי על ידי מ"ט ותהי $\overline{L}$ שפה שלא ניתנת לזיהוי על ידי מ"ט. נסתכל בשפה הבאה: $L' = \{0w \mid w \in L\} \cup \{1w \mid w \notin L\}$. האם $L'$ – ניתנת להכרעה? ניתנת לזיהוי? הוכיחו.
+	- **תשובה:** 
+		- נניח בשלילה ש- $L'$ ניתנת לזיהוי.
+			- אזי קיימת מ"ט $M'$ שמזהה את $L'$.
+			- נבנה מ"ט $M$: "עבור כל קלט $w$:
+				- נריץ את $M'$ על $1w$, אם $M'$ מקבל, נקבל. אם $M'$ דוחה, נדחה." 
+			- אם $w\in \overline {L}$, אז $w\notin L$, ולכן $1w\in L'$ ולכן $M'$ מקבל את $1w$, ולכן $M$ מקבל את $w$.
+			- אם כן מצאנו מ"ט $M$ המזהה את $\overline{L}$. בסתירה לנתון בשאלה.
+			- מסקנה: $L'$ אינה ניתנת לזיהוי.
+			- לכן, $L'$ גם אינה ניתנת להכרעה.
 
 
 ## שאלה 4
 
 - א. נסתכל ב-2 שפות הבאות:
 - WVC: given a graph $G(V,E)$, a weight function $w:V \to R^+$, constant $k$. then $\langle G,f,k\rangle$ belongs to WVC if $G$ has a vertex cover of total weight of most $k$.
-- VC: given a graph $G(V,E)$ and integer $K$. Then $\langle G,K \rangle$ belongs to VC if $G$ has a vertex cover of size at most $K$.
-	- נניח שידוע ש-$VC$ שפה NP שלמה. הוכיחו ש-$WVC$ שפה NP שלמה.
+- VC: given a graph $G(V,E)$ and integer $k$. Then $\langle G,k \rangle$ belongs to VC if $G$ has a vertex cover of size at most $k$.
+	- נניח שידוע ש-$\text{VC}$ שפה NP שלמה. הוכיחו ש-$\text{WVC}$ שפה NP שלמה.
 	- **תשובה:** 
+		- נראה רדוקציה פולי' מ- $\text{VC}$ ל- $\text{WVC}$. כלומר נראה ש: $\text{VC} \leq_p \text{WVC}$.
+		- נגדיר פונקציה כך: $f(\langle G,k\rangle)= (G,w,k)$, כאשר $w(v) = 1$ לכל $v\in V$.
+		- בבירור $\langle G,k \rangle \in \text{VC} \iff f(\langle G,k\rangle)=\langle G,w,k \rangle \in \text{WVC}$. והפונקציה ניתנתה לחישוב בזמן פולינומיאלי.
 - ב. הוכיחו שהשפה $\text{HALF-CLIQUE}$ היא שפה NP שלמה.
 	- גרף $G(V,E)$ לא מכוון שייך לשפה $\text{HALF-CLIQUE}$ אם קיימת ב-$G$ קליקה שמכילה חצי מהצמתים שלו.
-	- **רמז**: רדוקציה מהבעייה $\text{Clique}$. $\langle G,k \rangle$ שייך לשפה אם בגרף לא מכוון יש קליקה בגודל $K$.
+	- **רמז**: רדוקציה מהבעייה $\text{Clique}$. $\langle G,k \rangle$ שייך לשפה אם בגרף לא מכוון יש קליקה בגודל $k$.
 	- **תשובה:** 
-
+		- ראשית, $\text{HALF-CLIQUE} \in \text{NP}$, כי בהינתן קבוצת צמתים בגודל $\frac{|V|}{2}$, ניתן לבדוק בזמן פולינומיאלי $O(|V|^2)$ אם יש קשת בין כל זוג צמתים בקבוצה זו.
+		- נראה רדוקציה פולי' מ- $\text{Clique}$ ל- $\text{HALF-CLIQUE}$. כלומר נראה ש: $\text{Clique} \leq_p \text{HALF-CLIQUE}$.
+		- נגדיר פונקציה כך: $f(\langle G=(V,E),k\rangle)= \langle G'=(V',E')\rangle$, כאשר:
+			- אם $k=\frac{|V|}{2}$ : נגדיר את $G'=(V',E')$ להיות גרף עם $E=E'$ ו- $V'=V$.
+			- אם $k> \frac{|V|}{2}$ : נגדיר את $G'=(V',E')$ להיות גרף עם $E=E'$ ו- $V'$ יכיל את הצמתים של $G$ וגם נוסיף לו $j$ צמתים חדשים (שלא מחוברים לשום צומת אחר), כאשר $j=2k- |V|$. (ואז מתקיים $k=\frac{|V|+j}{2}=\frac{|V'|}{2}$). 
+				- מתקיים ש: ל- $G$ יש קליקה בגודל $k$ אם ורק אם ל- $G'$ יש קליקה בגודל $\frac{|V'|}{2}=k$
+			- אם $k<\frac{|V|}{2}$ : נגדיר את $G'=(V',E')$ להיות גרף כאשר $V'$ יכלול את כל הצמתים של $G$ וגם נוסיף לו $j$ צמתים חדשים, כאשר $j=|V|-2k$. (ואז $|V'|=|V|+j=2|V|-2k$). ו- $E'$ יכיל את כל הקשתות של $G$ וגם נוסיף קשתות בין כל $j$ הצמתים החדשים, וגם מכל צומת חדש לכל צומת ב- $G$. 
+				- מתקיים ש: ל- $G$ יש קליקה בגודל $k$ אם ורק אם ל- $G'$ יש קליקה בגודל $k+j=|V|-k$.
+			- אם $\langle G,k\rangle\in\text{Clique}$, 
+			- אם כן: $\langle G,k\rangle\in\text{Clique} \iff \langle G'\rangle\in\text{HALF-CLIQUE}$.
+			- מאחר ש: CLIQUE היא NP-שלמה (מסקנה 7.43), נובע ש- $\text{HALF-CLIQUE}$ גם היא NP-שלמה (לפי משפט 7.36).
 
 # מועד 2025a-64  
 
